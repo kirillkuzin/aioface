@@ -106,8 +106,10 @@ class FacebookRequest:
     def __init__(self,
                  page_token: str,
                  sender_psid: int,
-                 message_text: str):
+                 message_text: str,
+                 payload: str):
         self.page_token = page_token
         self.sender_psid = sender_psid
         self.message_text = message_text
+        self.payload = payload
         self.contains = None

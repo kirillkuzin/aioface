@@ -35,10 +35,16 @@ class Bot:
             if request_data['object'] == 'page':
                 event_data = request_data['entry'][0]['messaging'][0]
                 sender_psid = event_data['sender']['id']
-                message_text = event_data['message']['text']
+                message_text = None
+                payload = None
+                if 'message' in event_data:
+                    message_text = event_data['message']['text']
+                if 'messaging_postbacks' in event_data:
+                    payload = event_data['messaging_postbacks']['payload']
                 fb_request = FacebookRequest(page_token=self.page_token,
                                              sender_psid=sender_psid,
-                                             message_text=message_text)
+                                             message_text=message_text,
+                                             payload=payload)
                 await self.dispatcher.notify_handler(fb_request=fb_request)
                 return web.json_response()
             else:
