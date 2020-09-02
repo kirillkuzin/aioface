@@ -1,6 +1,7 @@
 import typing
 from dataclasses import dataclass, asdict
 
+from aioface import config
 from aioface.fb.utils import fb_dict_factory
 
 import aiohttp
@@ -70,7 +71,7 @@ class FacebookResponse:
         data = self._build()
         async with aiohttp.ClientSession() as session:
             await session.post(
-                url='https://graph.facebook.com/v2.6/me/messages',
+                url=config.GRAPH_API_URL,
                 params={'access_token': self.page_token},
                 json=data
             )
@@ -85,7 +86,6 @@ class FacebookResponse:
                 obj=self.attachment,
                 dict_factory=fb_dict_factory
             )
-        elif
         if self.quick_replies is not None:
             body['message']['quick_replies'] = [
                 asdict(obj=reply, dict_factory=fb_dict_factory)
@@ -99,20 +99,8 @@ class FacebookRequest:
     def __init__(self,
                  page_token: str,
                  sender_psid: int,
-                 message_text: str,
-                 contains=None):
+                 message_text: str):
         self.page_token = page_token
         self.sender_psid = sender_psid
         self.message_text = message_text
-        self.contains = contains
-
-    async def response(self, text: str):
-        request_body = {'recipient': {'id': self.sender_psid},
-                        'message': {'text': text}}
-        print(request_body)
-        async with aiohttp.ClientSession() as session:
-            await session.post(
-                url=f'https://graph.facebook.com/v2.6/me/messages',
-                params={'access_token': self.page_token},
-                json=request_body
-            )
+        self.contains = None
