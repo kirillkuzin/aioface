@@ -39,8 +39,8 @@ class Bot:
                 payload = None
                 if 'message' in event_data:
                     message_text = event_data['message']['text']
-                if 'messaging_postbacks' in event_data:
-                    payload = event_data['messaging_postbacks']['payload']
+                if 'postback' in event_data:
+                    payload = event_data['postback']['payload']
                 fb_request = FacebookRequest(page_token=self.page_token,
                                              sender_psid=sender_psid,
                                              message_text=message_text,
