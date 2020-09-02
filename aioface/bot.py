@@ -7,19 +7,16 @@ from aioface.fb.facebook_request import FacebookRequest
 
 
 class Bot:
-    DEFAULT_WEBHOOK = '/'
+    DEFAULT_HOST = '0.0.0.0'
     DEFAULT_PORT = 8080
+    DEFAULT_WEBHOOK = '/'
 
     def __init__(self,
                  webhook_token: str,
                  page_token: str,
-                 dispatcher: Dispatcher,
-                 webhook: str = DEFAULT_WEBHOOK,
-                 port: int = DEFAULT_PORT):
+                 dispatcher: Dispatcher):
         self.webhook_token = webhook_token
-        self.webhook = webhook
         self.page_token = page_token
-        self.port = port
         self.dispatcher = dispatcher
 
     def verify_webhook(self, data: typing.Dict):
@@ -47,10 +44,15 @@ class Bot:
             else:
                 return web.json_response(status=404)
 
-    def run(self):
+    def run(self,
+            host: str = DEFAULT_HOST,
+            port: int = DEFAULT_PORT,
+            webhook: str = DEFAULT_WEBHOOK):
         bot_app = web.Application()
-        bot_app.add_routes([web.get(self.DEFAULT_WEBHOOK,
+        bot_app.add_routes([web.get(webhook,
                                     self.handle_request),
-                            web.post(self.DEFAULT_WEBHOOK,
+                            web.post(webhook,
                                      self.handle_request)])
-        web.run_app(bot_app)
+        web.run_app(app=bot_app,
+                    host=host,
+                    port=port)
