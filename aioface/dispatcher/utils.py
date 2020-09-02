@@ -11,3 +11,9 @@ def check_contains(fb_contains, filter_contains) -> bool:
     if len(intersection) == 0:
         return False
     return True
+
+
+def check_payload(fb_payload, filter_payload) -> bool:
+    if filter_payload is None or fb_payload == filter_payload:
+        return True
+    return False
