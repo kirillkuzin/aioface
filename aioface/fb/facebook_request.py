@@ -2,6 +2,7 @@ import typing
 from dataclasses import asdict
 
 from aioface import config
+from aioface.fb import types
 from aioface.fb.utils import fb_dict_factory
 
 import aiohttp
@@ -10,10 +11,10 @@ import aiohttp
 class FacebookResponse:
     def __init__(self,
                  recipient_id: str,
-                 page_token: str = None,
+                 page_token: str,
                  text: str = None,
-                 attachment: FacebookAttachment = None,
-                 quick_replies: typing.List[FacebookQuickReply] = None,
+                 attachment: types.FacebookAttachment = None,
+                 quick_replies: typing.List[types.FacebookQuickReply] = None,
                  sender_action: str = None):
         if text is None and attachment is None:
             if sender_action is None:

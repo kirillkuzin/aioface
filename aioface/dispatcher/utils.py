@@ -1,6 +1,3 @@
-import typing
-
-
 def check_full_text(fb_full_text, filter_full_text) -> bool:
     if filter_full_text is None or fb_full_text == filter_full_text:
         return True
