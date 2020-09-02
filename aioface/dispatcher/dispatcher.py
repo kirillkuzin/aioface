@@ -2,7 +2,6 @@ import typing
 from dataclasses import dataclass
 
 from aioface.storages.base_storage import BaseStorage
-from aioface.fb.facebook_request import FacebookResponse
 from aioface.fb.facebook_request import FacebookRequest
 import aioface.dispatcher.utils as utils
 
@@ -42,20 +41,17 @@ class Dispatcher:
         return decorator
 
     async def notify_handler(self, fb_request: FacebookRequest):
-        fb_response = FacebookResponse(recipient_id=fb_request.sender_psid,
-                                       text='Server error')
         for handler_obj in self.handlers:
             filter_obj = handler_obj.filter
             if not utils.check_full_text(
                     fb_full_text=fb_request.message_text,
                     filter_full_text=filter_obj.full_text):
                 continue
-            if not utils.check_contains(fb_contains=fb_request.contains,
-                                        filter_contains=filter_obj.contains):
-                continue
+            # if not utils.check_contains(fb_contains=fb_request.contains,
+            #                             filter_contains=filter_obj.contains):
+            #     continue
             if not utils.check_payload(fb_payload=fb_request.payload,
                                        filter_payload=filter_obj.payload):
                 continue
-            fb_response = await handler_obj.callback(fb_request)
+            await handler_obj.callback(fb_request)
             break
-        await fb_response.send()

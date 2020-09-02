@@ -8,30 +8,24 @@ from aioface.fb.utils import fb_dict_factory
 import aiohttp
 
 
-class FacebookResponse:
+class FacebookRequest:
     def __init__(self,
-                 recipient_id: str,
+                 sender_psid: str,
                  page_token: str,
-                 text: str = None,
-                 attachment: types.FacebookAttachment = None,
-                 quick_replies: typing.List[types.FacebookQuickReply] = None,
-                 sender_action: str = None):
-        if text is None and attachment is None:
-            if sender_action is None:
-                raise ValueError
-        elif text is not None and attachment is not None:
-            raise ValueError
-        elif sender_action is not None:
-            raise ValueError
+                 message_text: str = None,
+                 payload: str = None):
         self.page_token = page_token
-        self.recipient_id = recipient_id
-        self.text = text
-        self.attachment = attachment
-        self.quick_replies = quick_replies
-        self.sender_action = sender_action
+        self.sender_psid = sender_psid
+        self.message_text = message_text
+        self.payload = payload
 
-    async def send(self):
-        data = self._build()
+    async def send_message(self, message: str):
+        await self._send(data=self._build_request_body(text=message))
+
+    async def send_attachment(self, attachment: types.FacebookAttachment):
+        await self._send(data=self._build_request_body(attachment=attachment))
+
+    async def _send(self, data: typing.Dict):
         async with aiohttp.ClientSession() as session:
             await session.post(
                 url=config.GRAPH_API_URL,
@@ -39,33 +33,25 @@ class FacebookResponse:
                 json=data
             )
 
-    def _build(self):
-        body = {'recipient': {'id': self.recipient_id},
+    def _build_request_body(
+            self,
+            text: str = None,
+            attachment: types.FacebookAttachment = None,
+            quick_replies: typing.List[types.FacebookQuickReply] = None
+    ) -> typing.Dict:
+        body = {'recipient': {'id': self.sender_psid},
                 'message': dict()}
-        if self.text is not None:
-            body['message']['text'] = self.text
-        elif self.attachment is not None:
+        if text is not None:
+            body['message']['text'] = text
+        if attachment is not None:
             body['message']['attachment'] = asdict(
-                obj=self.attachment,
+                obj=attachment,
                 dict_factory=fb_dict_factory
             )
-        if self.quick_replies is not None:
+        if quick_replies is not None:
             body['message']['quick_replies'] = [
                 asdict(obj=reply, dict_factory=fb_dict_factory)
-                for reply in self.quick_replies
+                for reply in quick_replies
             ]
         print(body)
         return body
-
-
-class FacebookRequest:
-    def __init__(self,
-                 page_token: str,
-                 sender_psid: int,
-                 message_text: str,
-                 payload: str):
-        self.page_token = page_token
-        self.sender_psid = sender_psid
-        self.message_text = message_text
-        self.payload = payload
-        self.contains = None
