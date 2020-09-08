@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="aioface",
-    version="0.0.1",
+    version="0.0.2",
     author="Kirill Kuzin",
     author_email="offkirillkuzin@gmail.com",
     description="aioface is a powerful and simple asynchronous framework "
