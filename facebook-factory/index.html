@@ -1,0 +1,781 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.12">
+    
+    
+      
+        <title>FacebookFactory - aioface docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4dd2dd8d.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.6a5ad368.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2094f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#facebookfactory" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="aioface docs" class="md-header-nav__button md-logo" aria-label="aioface docs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            aioface docs
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              FacebookFactory
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/kirillkuzin/aioface/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kirillkuzin/aioface
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="aioface docs" class="md-nav__button md-logo" aria-label="aioface docs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    aioface docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kirillkuzin/aioface/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kirillkuzin/aioface
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="aioface" class="md-nav__link">
+      aioface
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        FacebookFactory
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="FacebookFactory" class="md-nav__link md-nav__link--active">
+      FacebookFactory
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#buttons" class="md-nav__link">
+    Buttons
+  </a>
+  
+    <nav class="md-nav" aria-label="Buttons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url-button" class="md-nav__link">
+    URL Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postback-button" class="md-nav__link">
+    Postback Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-button" class="md-nav__link">
+    Call Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-in-button" class="md-nav__link">
+    Log In Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-out-button" class="md-nav__link">
+    Log Out Button
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    Templates
+  </a>
+  
+    <nav class="md-nav" aria-label="Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generic-template" class="md-nav__link">
+    Generic Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-template" class="md-nav__link">
+    Button Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media-template" class="md-nav__link">
+    Media Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receipt-template" class="md-nav__link">
+    Receipt Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-boarding-pass-template" class="md-nav__link">
+    Airline Boarding Pass Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-check-in-template" class="md-nav__link">
+    Airline Check-in Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-itinerary-template" class="md-nav__link">
+    Airline Itinerary Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-update-template" class="md-nav__link">
+    Airline Update Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-replies" class="md-nav__link">
+    Quick Replies
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Replies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-quick-reply" class="md-nav__link">
+    Text Quick Reply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-phone-number-quick-reply" class="md-nav__link">
+    User Phone Number Quick Reply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-email-quick-reply" class="md-nav__link">
+    User Email Quick Reply
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attachment-upload-api" class="md-nav__link">
+    Attachment Upload API
+  </a>
+  
+    <nav class="md-nav" aria-label="Attachment Upload API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    Video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    Audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#buttons" class="md-nav__link">
+    Buttons
+  </a>
+  
+    <nav class="md-nav" aria-label="Buttons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url-button" class="md-nav__link">
+    URL Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postback-button" class="md-nav__link">
+    Postback Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-button" class="md-nav__link">
+    Call Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-in-button" class="md-nav__link">
+    Log In Button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-out-button" class="md-nav__link">
+    Log Out Button
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    Templates
+  </a>
+  
+    <nav class="md-nav" aria-label="Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generic-template" class="md-nav__link">
+    Generic Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-template" class="md-nav__link">
+    Button Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media-template" class="md-nav__link">
+    Media Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receipt-template" class="md-nav__link">
+    Receipt Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-boarding-pass-template" class="md-nav__link">
+    Airline Boarding Pass Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-check-in-template" class="md-nav__link">
+    Airline Check-in Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-itinerary-template" class="md-nav__link">
+    Airline Itinerary Template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airline-update-template" class="md-nav__link">
+    Airline Update Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-replies" class="md-nav__link">
+    Quick Replies
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Replies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-quick-reply" class="md-nav__link">
+    Text Quick Reply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-phone-number-quick-reply" class="md-nav__link">
+    User Phone Number Quick Reply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-email-quick-reply" class="md-nav__link">
+    User Email Quick Reply
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attachment-upload-api" class="md-nav__link">
+    Attachment Upload API
+  </a>
+  
+    <nav class="md-nav" aria-label="Attachment Upload API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    Video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    Audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kirillkuzin/aioface/edit/master/docs/facebook-factory.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="facebookfactory">FacebookFactory</h1>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aioface</span> <span class="kn">import</span> <span class="n">FacebookFactory</span>
+
+
+<span class="n">fb_factory</span> <span class="o">=</span> <span class="n">FacebookFactory</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="buttons"><a href="https://developers.facebook.com/docs/messenger-platform/reference/buttons">Buttons</a></h2>
+<h3 id="url-button"><a href="https://developers.facebook.com/docs/messenger-platform/reference/buttons/url">URL Button</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">button</span> <span class="o">=</span> <span class="n">fb_factory</span><span class="o">.</span><span class="n">create_url_button</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Just button&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;awesome_url&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="postback-button"><a href="https://developers.facebook.com/docs/messenger-platform/reference/buttons/postback">Postback Button</a></h3>
+<h3 id="call-button"><a href="https://developers.facebook.com/docs/messenger-platform/reference/buttons/call/">Call Button</a></h3>
+<h3 id="log-in-button"><a href="https://developers.facebook.com/docs/messenger-platform/reference/buttons/login/">Log In Button</a></h3>
+<h3 id="log-out-button"><a href="https://developers.facebook.com/docs/messenger-platform/reference/buttons/logout/">Log Out Button</a></h3>
+<h2 id="templates"><a href="https://developers.facebook.com/docs/messenger-platform/reference/templates">Templates</a></h2>
+<h3 id="generic-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/template/generic">Generic Template</a></h3>
+<h3 id="button-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/template/button">Button Template</a></h3>
+<h3 id="media-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/template/media">Media Template</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="receipt-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/template/receipt">Receipt Template</a></h3>
+<h3 id="airline-boarding-pass-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/template/airline-boarding-pass">Airline Boarding Pass Template</a></h3>
+<h3 id="airline-check-in-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/template/airline-checkin/">Airline Check-in Template</a></h3>
+<h3 id="airline-itinerary-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/template/airline-itinerary">Airline Itinerary Template</a></h3>
+<h3 id="airline-update-template"><a href="https://developers.facebook.com/docs/messenger-platform/reference/templates/airline-flight-update">Airline Update Template</a></h3>
+<h2 id="quick-replies"><a href="https://developers.facebook.com/docs/messenger-platform/reference/buttons/quick-replies">Quick Replies</a></h2>
+<h3 id="text-quick-reply">Text Quick Reply</h3>
+<h3 id="user-phone-number-quick-reply">User Phone Number Quick Reply</h3>
+<h3 id="user-email-quick-reply">User Email Quick Reply</h3>
+<h2 id="attachment-upload-api"><a href="https://developers.facebook.com/docs/messenger-platform/reference/attachment-upload-api">Attachment Upload API</a></h2>
+<h3 id="image">Image</h3>
+<h3 id="video">Video</h3>
+<h3 id="audio">Audio</h3>
+<h3 id="file">File</h3>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." title="aioface" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                aioface
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
