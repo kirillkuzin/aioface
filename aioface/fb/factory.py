@@ -150,35 +150,6 @@ class FacebookFactory:
         return self._create_attachment(attachment_type='template',
                                        payload=attachment_payload)
 
-    def create_list_template_element(
-            self,
-            title: str = None,
-            subtitle: str = None,
-            image_url: str = None,
-            default_action: types.FacebookButton = None,
-            buttons: typing.List[types.FacebookButton] = None
-    ) -> types.FacebookTemplate:
-        return self._create_template(title=title,
-                                     subtitle=subtitle,
-                                     image_url=image_url,
-                                     default_action=default_action,
-                                     buttons=buttons)
-
-    def create_list_template_attachment(
-            self,
-            list_template_elements: typing.List[types.FacebookTemplate],
-            top_element_style: str = None,
-            button: types.FacebookButton = None,
-    ) -> types.FacebookAttachment:
-        attachment_payload = self._create_attachment_payload(
-            template_type='list',
-            top_element_style=top_element_style,
-            buttons=[button],
-            elements=list_template_elements
-        )
-        return self._create_attachment(attachment_type='template',
-                                       payload=attachment_payload)
-
     def create_button_template_attachment(
             self,
             text: str,

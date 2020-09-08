@@ -62,7 +62,6 @@ class FacebookQuickReply:
 class FacebookAttachmentPayload:
     template_type: str = None
     text: str = None
-    top_element_style: str = None
     elements: typing.List[FacebookTemplate] = None
     buttons: typing.List[FacebookButton] = None
     url: str = None
