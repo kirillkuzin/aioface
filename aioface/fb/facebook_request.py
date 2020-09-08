@@ -19,11 +19,17 @@ class FacebookRequest:
         self.message_text = message_text
         self.payload = payload
 
-    async def send_message(self, message: str):
-        await self._send(data=self._build_request_body(text=message))
-
-    async def send_attachment(self, attachment: types.FacebookAttachment):
-        await self._send(data=self._build_request_body(attachment=attachment))
+    async def send_message(
+            self,
+            message: str = None,
+            attachment: types.FacebookAttachment = None,
+            quick_replies: typing.List[types.FacebookQuickReply] = None
+    ) -> None:
+        await self._send(data=self._build_request_body(
+            text=message,
+            attachment=attachment,
+            quick_replies=quick_replies
+        ))
 
     async def _send(self, data: typing.Dict):
         async with aiohttp.ClientSession() as session:
@@ -40,7 +46,7 @@ class FacebookRequest:
             quick_replies: typing.List[types.FacebookQuickReply] = None
     ) -> typing.Dict:
         body = {'recipient': {'id': self.sender_psid},
-                'message': dict()}
+                'message': {}}
         if text is not None:
             body['message']['text'] = text
         if attachment is not None:

@@ -171,6 +171,49 @@ class FacebookFactory:
                                             is_reusable=is_reusable,
                                             attachment_id=attachment_id)
 
+    @staticmethod
+    def _create_quick_reply(content_type: str,
+                            title: str = None,
+                            payload: typing.Union[str, int] = None,
+                            image_url: str = None) -> types.FacebookQuickReply:
+        return types.FacebookQuickReply(content_type=content_type,
+                                        title=title,
+                                        payload=payload,
+                                        image_url=image_url)
+
+    def create_text_quick_reply(
+            self,
+            title: str,
+            payload: typing.Union[str, int],
+            image_url: str = None
+    ) -> types.FacebookQuickReply:
+        return self._create_quick_reply(content_type='text',
+                                        title=title,
+                                        payload=payload,
+                                        image_url=image_url)
+
+    def create_user_phone_number_quick_reply(
+            self,
+            title: str = None,
+            payload: typing.Union[str, int] = None,
+            image_url: str = None
+    ) -> types.FacebookQuickReply:
+        return self._create_quick_reply(content_type='user_phone_number',
+                                        title=title,
+                                        payload=payload,
+                                        image_url=image_url)
+
+    def create_user_email_quick_reply(
+            self,
+            title: str = None,
+            payload: typing.Union[str, int] = None,
+            image_url: str = None
+    ) -> types.FacebookQuickReply:
+        return self._create_quick_reply(content_type='user_email',
+                                        title=title,
+                                        payload=payload,
+                                        image_url=image_url)
+
     def create_generic_template_element(
             self,
             title: str,
