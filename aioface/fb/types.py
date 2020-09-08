@@ -78,8 +78,8 @@ class FacebookQuickReply:
 
 @dataclass
 class FacebookFile:
-    url: str
-    is_reusable: bool
+    url: typing.Optional[str]
+    is_reusable: typing.Optional[bool]
     attachment_id: typing.Optional[str]
 
 

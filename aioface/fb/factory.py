@@ -84,10 +84,16 @@ class FacebookFactory:
     @staticmethod
     def _create_file_attachment(
             file_type: str,
-            url: str,
-            is_reusable: bool = True,
+            url: str = None,
+            is_reusable: bool = False,
             attachment_id: str = None
     ) -> types.FacebookAttachment:
+        if url is None and attachment_id is None:
+            raise AttributeError
+        if attachment_id is not None:
+            if url is not None:
+                raise AttributeError
+            is_reusable = None
         facebook_file = types.FacebookFile(url=url,
                                            is_reusable=is_reusable,
                                            attachment_id=attachment_id)
@@ -120,6 +126,50 @@ class FacebookFactory:
 
     def create_log_out_button(self) -> types.FacebookButton:
         return self._create_button(button_type='account_unlink')
+
+    def create_image_attachment(
+            self,
+            url: str = None,
+            is_reusable: bool = False,
+            attachment_id: str = None
+    ) -> types.FacebookAttachment:
+        return self._create_file_attachment(file_type='image',
+                                            url=url,
+                                            is_reusable=is_reusable,
+                                            attachment_id=attachment_id)
+
+    def create_video_attachment(
+            self,
+            url: str = None,
+            is_reusable: bool = False,
+            attachment_id: str = None
+    ) -> types.FacebookAttachment:
+        return self._create_file_attachment(file_type='video',
+                                            url=url,
+                                            is_reusable=is_reusable,
+                                            attachment_id=attachment_id)
+
+    def create_audio_attachment(
+            self,
+            url: str = None,
+            is_reusable: bool = False,
+            attachment_id: str = None
+    ) -> types.FacebookAttachment:
+        return self._create_file_attachment(file_type='audio',
+                                            url=url,
+                                            is_reusable=is_reusable,
+                                            attachment_id=attachment_id)
+
+    def create_file_attachment(
+            self,
+            url: str = None,
+            is_reusable: bool = False,
+            attachment_id: str = None
+    ) -> types.FacebookAttachment:
+        return self._create_file_attachment(file_type='file',
+                                            url=url,
+                                            is_reusable=is_reusable,
+                                            attachment_id=attachment_id)
 
     def create_generic_template_element(
             self,
