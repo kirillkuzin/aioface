@@ -8,7 +8,7 @@ import aioface.dispatcher.utils as utils
 
 @dataclass
 class Filter:
-    full_text: typing.Union[str, typing.List[str]]
+    message: typing.Union[str, typing.List[str]]
     contains: typing.Union[str, typing.Set[str]]
     payload: typing.Union[str, typing.List[str]]
 
@@ -26,12 +26,12 @@ class Dispatcher:
 
     def message_handler(
             self,
-            full_text: typing.Union[str, typing.List[str]] = None,
+            message: typing.Union[str, typing.List[str]] = None,
             contains: typing.Union[str, typing.List[str]] = None,
             payload: typing.Union[str, typing.List[str]] = None
     ):
         def decorator(callback):
-            filter_obj = Filter(full_text=full_text,
+            filter_obj = Filter(message=message,
                                 contains=set(contains) if contains else None,
                                 payload=payload)
             handler_obj = Handler(callback=callback, filter=filter_obj)
@@ -45,7 +45,7 @@ class Dispatcher:
             filter_obj = handler_obj.filter
             if not utils.check_full_text(
                     fb_full_text=fb_request.message_text,
-                    filter_full_text=filter_obj.full_text):
+                    filter_full_text=filter_obj.message):
                 continue
             # if not utils.check_contains(fb_contains=fb_request.contains,
             #                             filter_contains=filter_obj.contains):
