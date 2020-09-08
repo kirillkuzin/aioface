@@ -12,7 +12,17 @@ class FacebookFactory:
             elements: typing.List[types.FacebookTemplate] = None,
             buttons: typing.List[types.FacebookButton] = None,
             url: str = None,
-            is_reusable: bool = None
+            is_reusable: bool = None,
+            recipient_name: str = None,
+            order_number: str = None,
+            currency: str = None,
+            payment_method: str = None,
+            order_url: str = None,
+            timestamp: str = None,
+            summary: types.FacebookSummary = None,
+            merchant_name: str = None,
+            adjustments: typing.List[types.FacebookAdjustment] = None,
+            address: types.FacebookAddress = None
     ) -> types.FacebookAttachmentPayload:
         return types.FacebookAttachmentPayload(
             template_type=template_type,
@@ -21,7 +31,17 @@ class FacebookFactory:
             elements=elements,
             buttons=buttons,
             url=url,
-            is_reusable=is_reusable
+            is_reusable=is_reusable,
+            recipient_name=recipient_name,
+            order_number=order_number,
+            currency=currency,
+            payment_method=payment_method,
+            order_url=order_url,
+            timestamp=timestamp,
+            summary=summary,
+            merchant_name=merchant_name,
+            adjustments=adjustments,
+            address=address
         )
 
     @staticmethod
@@ -53,13 +73,19 @@ class FacebookFactory:
                          subtitle: str = None,
                          image_url: str = None,
                          default_action: types.FacebookButton = None,
-                         buttons: typing.List[types.FacebookButton] = None
+                         buttons: typing.List[types.FacebookButton] = None,
+                         price: float = None,
+                         quantity: float = None,
+                         currency: str = None,
                          ) -> types.FacebookTemplate:
         return types.FacebookTemplate(title=title,
                                       subtitle=subtitle,
                                       image_url=image_url,
                                       default_action=default_action,
-                                      buttons=buttons)
+                                      buttons=buttons,
+                                      price=price,
+                                      quantity=quantity,
+                                      currency=currency)
 
     def create_url_button(self,
                           title: str,
@@ -162,6 +188,87 @@ class FacebookFactory:
             template_type='button',
             text=text,
             buttons=buttons
+        )
+        return self._create_attachment(attachment_type='template',
+                                       payload=attachment_payload)
+
+    def create_receipt_template_element(
+            self,
+            title: str,
+            price: float,
+            subtitle: str = None,
+            quantity: float = None,
+            currency: str = None,
+            image_url: str = None
+    ) -> types.FacebookTemplate:
+        return self._create_template(title=title,
+                                     price=price,
+                                     subtitle=subtitle,
+                                     quantity=quantity,
+                                     currency=currency,
+                                     image_url=image_url)
+
+    @staticmethod
+    def create_receipt_template_adjusment(
+            name: str,
+            amount: float
+    ) -> types.FacebookAdjustment:
+        return types.FacebookAdjustment(name=name,
+                                        amount=amount)
+
+    @staticmethod
+    def create_receipt_template_summary(
+            total_cost: float,
+            subtotal: float = None,
+            shipping_cost: float = None,
+            total_tax: float = None,
+    ) -> types.FacebookSummary:
+        return types.FacebookSummary(subtotal=subtotal,
+                                     shipping_cost=shipping_cost,
+                                     total_tax=total_tax,
+                                     total_cost=total_cost)
+
+    @staticmethod
+    def create_receipt_template_address(
+            street_1: str,
+            city: str,
+            postal_code: str,
+            state: str,
+            country: str,
+            street_2: str = None
+    ) -> types.FacebookAddress:
+        return types.FacebookAddress(street_1=street_1,
+                                     street_2=street_2,
+                                     city=city,
+                                     postal_code=postal_code,
+                                     state=state,
+                                     country=country)
+
+    def create_receipt_template_attachment(
+            self,
+            recipient_name: str,
+            order_number: str,
+            currency: str,
+            payment_method: str,
+            summary: types.FacebookSummary,
+            merchant_name: str = None,
+            timestamp: str = None,
+            elements: typing.List[types.FacebookTemplate] = None,
+            address: types.FacebookAddress = None,
+            adjustments: typing.List[types.FacebookAdjustment] = None
+    ):
+        attachment_payload = self._create_attachment_payload(
+            template_type='receipt',
+            recipient_name=recipient_name,
+            order_number=order_number,
+            currency=currency,
+            payment_method=payment_method,
+            summary=summary,
+            merchant_name=merchant_name,
+            timestamp=timestamp,
+            elements=elements,
+            address=address,
+            adjustments=adjustments
         )
         return self._create_attachment(attachment_type='template',
                                        payload=attachment_payload)

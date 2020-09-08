@@ -15,12 +15,39 @@ class FacebookButton:
 
 
 @dataclass
+class FacebookAddress:
+    street_1: str = None
+    street_2: str = None
+    city: str = None
+    postal_code: str = None
+    state: str = None
+    country: str = None
+
+
+@dataclass
+class FacebookSummary:
+    subtotal: float = None
+    shipping_cost: float = None
+    total_tax: float = None
+    total_cost: float = None
+
+
+@dataclass
+class FacebookAdjustment:
+    name: str = None
+    amount: float = None
+
+
+@dataclass
 class FacebookTemplate:
     title: str
     subtitle: str = None
     image_url: str = None
     default_action: FacebookButton = None
     buttons: typing.List[FacebookButton] = None
+    quantity: float = None
+    price: float = None
+    currency: str = None
 
 
 @dataclass
@@ -40,6 +67,16 @@ class FacebookAttachmentPayload:
     buttons: typing.List[FacebookButton] = None
     url: str = None
     is_reusable: bool = None
+    recipient_name: str = None
+    merchant_name: str = None
+    order_number: str = None
+    currency: str = None
+    payment_method: str = None
+    order_url: str = None
+    timestamp: str = None
+    summary: FacebookSummary = None
+    adjustments: typing.List[FacebookAdjustment] = None
+    address: FacebookAddress = None
 
 
 @dataclass
