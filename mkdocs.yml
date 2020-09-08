@@ -1,0 +1,19 @@
+site_name: aioface docs
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: deep orange
+  icon:
+    repo: fontawesome/brands/github
+repo_url: https://github.com/kirillkuzin/aioface
+repo_name: kirillkuzin/aioface
+nav:
+  - aioface: index.md
+  - FacebookFactory: facebook-factory.md
+markdown_extensions:
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      linenums: true
