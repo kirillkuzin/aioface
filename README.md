@@ -8,6 +8,10 @@ aioface is a powerful and simple asynchronous framework for the Facebook Messeng
 $ pip install aioface
 ```
 
+## Useful links
+
+* [Documentation](https://kirillkuzin.github.io/aioface/)
+
 ## Examples
 
 ### Echo bot
