@@ -33,11 +33,13 @@ class FacebookRequest:
 
     async def _send(self, data: typing.Dict):
         async with aiohttp.ClientSession() as session:
-            await session.post(
+            response = await session.post(
                 url=config.GRAPH_API_URL,
                 params={'access_token': self.page_token},
                 json=data
             )
+            print(await response.json())
+            return await response.json()
 
     def _build_request_body(
             self,
