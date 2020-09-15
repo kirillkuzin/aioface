@@ -44,8 +44,8 @@ class Dispatcher:
         for handler_obj in self.handlers:
             filter_obj = handler_obj.filter
             if not utils.check_full_text(
-                    fb_full_text=fb_request.message_text,
-                    filter_full_text=filter_obj.message):
+                    fb_message=fb_request.message_text,
+                    filter_message=filter_obj.message):
                 continue
             # if not utils.check_contains(fb_contains=fb_request.contains,
             #                             filter_contains=filter_obj.contains):

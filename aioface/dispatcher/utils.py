@@ -1,5 +1,6 @@
-def check_full_text(fb_full_text, filter_full_text) -> bool:
-    if filter_full_text is None or fb_full_text == filter_full_text:
+def check_full_text(fb_message, filter_message) -> bool:
+    if filter_message is None or fb_message == filter_message or \
+            fb_message in filter_message:
         return True
     return False
 
