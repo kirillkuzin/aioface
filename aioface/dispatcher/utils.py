@@ -15,6 +15,7 @@ def check_contains(fb_contains, filter_contains) -> bool:
 
 
 def check_payload(fb_payload, filter_payload) -> bool:
-    if filter_payload is None or fb_payload == filter_payload:
+    if filter_payload is None or fb_payload == filter_payload or \
+            fb_payload in filter_payload:
         return True
     return False
