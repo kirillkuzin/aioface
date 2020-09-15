@@ -1,3 +1,4 @@
+import logging
 import typing
 from dataclasses import asdict
 
@@ -6,6 +7,9 @@ from aioface.fb import types
 from aioface.fb.utils import fb_dict_factory
 
 import aiohttp
+
+
+logger = logging.getLogger(__name__)
 
 
 class FacebookRequest:
@@ -38,8 +42,9 @@ class FacebookRequest:
                 params={'access_token': self.page_token},
                 json=data
             )
-            print(await response.json())
-            return await response.json()
+            response_content = await response.json()
+            logger.debug(f'Response data from facebook: {response_content}')
+            return response_content
 
     def _build_request_body(
             self,
@@ -61,5 +66,5 @@ class FacebookRequest:
                 asdict(obj=reply, dict_factory=fb_dict_factory)
                 for reply in quick_replies
             ]
-        print(body)
+        logger.debug(f'Request data to facebook: {body}')
         return body

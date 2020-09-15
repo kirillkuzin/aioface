@@ -1,9 +1,13 @@
+import logging
 import typing
 
 from aiohttp import web
 
 from aioface.dispatcher import Dispatcher
 from aioface.fb.facebook_request import FacebookRequest
+
+
+logger = logging.getLogger(__name__)
 
 
 class Bot:
@@ -31,7 +35,7 @@ class Bot:
             return self.verify_webhook(data=request.rel_url.query)
         elif request.method == 'POST':
             request_data = await request.json()
-            print(request_data)
+            logger.debug(f'Request data from facebook: {request_data}')
             if request_data['object'] == 'page':
                 event_data = request_data['entry'][0]['messaging'][0]
                 sender_psid = event_data['sender']['id']
