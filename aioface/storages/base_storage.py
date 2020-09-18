@@ -21,4 +21,4 @@ class BaseStorage:
         raise NotImplementedError
 
     async def reset_data(self, user_id: str):
-        await self.update_data(user_id=user_id, data=dict())
+        await self.set_data(user_id=user_id, data=dict())
