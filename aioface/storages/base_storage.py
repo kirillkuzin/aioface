@@ -2,7 +2,6 @@ import typing
 
 
 class BaseStorage:
-
     async def get_data(self, user_id: str) -> typing.Dict:
         raise NotImplementedError
 
