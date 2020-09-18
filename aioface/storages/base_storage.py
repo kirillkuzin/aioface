@@ -15,6 +15,5 @@ class BaseStorage(ABC):
     def update_data(self, user_id: str, data: typing.Dict):
         raise NotImplementedError
 
-    @abstractmethod
     def reset_data(self, user_id: str):
-        await self.set_data(user_id=user_id, data=dict())
+        self.set_data(user_id=user_id, data=dict())
